@@ -1,0 +1,31 @@
+.productItemWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.productImageBox {
+  width: 90px;
+  height: 62px;
+  margin-right: 14px;
+}
+
+.productImage {
+  width: 100%;
+}
+
+.productName {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 13px;
+}
+
+.productDetailsBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 190px;
+}
+
+.productTotalPrice {
+  font-weight: 700;
+}

@@ -1,0 +1,46 @@
+@import 'styles/shared.scss';
+
+.menu {
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+
+.hiddenTitle {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: $secondary-color;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-weight: 400;
+  color: $secondary-color;
+}
+
+.descriptionBox {
+  position: relative;
+  height: 117px;
+  overflow: hidden;
+}
+
+.descriptionBoxFull {
+  @extend .descriptionBox;
+  height: auto;
+}
+
+.gradientBox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 330px;
+  height: 109px;
+  background: linear-gradient(180deg, rgba(242, 242, 242, 0) 0%, #f2f2f2 100%);
+}

@@ -1,0 +1,129 @@
+.checkout {
+  padding-top: 11px;
+  padding-bottom: 42px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.field {
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 9px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  &::placeholder {
+    color: #a4acad;
+  }
+}
+
+.fullField {
+  @extend .field;
+  width: 330px;
+}
+
+.halfField {
+  @extend .field;
+  width: 160px;
+}
+
+.shortFieldLeft {
+  @extend .field;
+  width: 122px;
+}
+
+.halfFieldLeft {
+  @extend .halfField;
+  margin-right: 10px;
+}
+
+.radioButtonBox {
+  display: inline-block;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.radioButtonItem {
+  display: inline-block;
+  float: left;
+}
+
+.radioButtonBox input[type='radio'] {
+  display: none;
+}
+
+.radioButtonBox label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 165px;
+  height: 40px;
+  padding: 9px;
+  user-select: none;
+  color: black;
+  background-color: #fff;
+  font-weight: 400;
+  line-height: 1.222;
+}
+
+.radioButtonBox .radioButtonItem:first-child label {
+  border-radius: 5px 0 0 5px;
+}
+.radioButtonBox .radioButtonItem:last-child label {
+  border-radius: 0 5px 5px 0;
+}
+
+.radioButtonBox input[type='radio']:checked + label {
+  background: #ff9846;
+  color: #fff;
+}
+
+.rightMargin10 {
+  margin-right: 10px;
+}
+
+.quantitySticksBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &:not(:last-child) {
+    margin-bottom: 7px;
+  }
+}
+
+.buttonsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px;
+}
+
+.quantitySticksText {
+  font-weight: 700;
+  line-height: 1.277;
+}
+
+.typeSticksText {
+  font-weight: 600;
+}
+
+.quantitySticksWrapper {
+  margin-bottom: 10px;
+}
+
+.resultPosition {
+  font-weight: 400;
+}
+
+.resultAmount {
+  font-weight: 600;
+}
+
+.totalPosition {
+  font-weight: 600;
+}

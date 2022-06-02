@@ -1,0 +1,46 @@
+@import 'styles/shared.scss';
+
+.cart {
+  padding-top: 10px;
+  padding-bottom: 82px;
+}
+
+.cartTitle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 7px;
+}
+
+.productsList {
+  width: 100%;
+  margin: 0 0 11px 0;
+
+  padding: 0;
+  list-style: none;
+}
+
+.productItem {
+  background-color: $mainLight-color;
+  border-radius: 5px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.productItem:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.totalTitle {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  color: $mainAccent-color;
+}
+
+.totalWrapper {
+  background-color: $mainLight-color;
+  border-radius: 5px;
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,45 @@
+@import 'styles/shared.scss';
+
+.cardBox {
+  position: relative;
+  // width: 107px;
+  // height: 121px;
+  background-color: transparent;
+}
+
+.imageBox {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.fullName {
+  min-height: 34px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.214;
+  text-align: center;
+  margin-bottom: 11px;
+}
+
+.priceBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.278;
+}
+
+.productImage {
+  width: 100px;
+  height: 100%;
+  object-fit: cover;
+}

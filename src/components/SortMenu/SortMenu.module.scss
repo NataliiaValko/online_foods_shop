@@ -1,0 +1,19 @@
+@import 'styles/shared.scss';
+
+.sortMenuWrapper {
+  position: relative;
+}
+
+.sortMenuBox {
+  position: relative;
+}
+
+.titleSortMenu {
+  position: absolute;
+  top: 4px;
+  left: 14px;
+  font-size: 14px;
+  line-height: 1.214;
+  font-weight: 300;
+  color: $secondary-color;
+}

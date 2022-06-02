@@ -1,0 +1,51 @@
+@import 'styles/shared.scss';
+
+.cardProductWrapper {
+  position: relative;
+  padding: 18px 10px 18px 18px;
+  width: 330px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: $mainLight-color;
+}
+
+.cardProductBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.imageBox {
+  width: 100px;
+  height: 84px;
+  overflow: hidden;
+}
+
+.productImage {
+  width: 100px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productInfoBox {
+  width: 180px;
+}
+
+.productFullName {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: $mainDark-color;
+}
+
+.productDetailsText {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 19px;
+  color: $secondary-color;
+}
+.productPrice {
+  font-weight: 700;
+  color: $mainDark-color;
+}

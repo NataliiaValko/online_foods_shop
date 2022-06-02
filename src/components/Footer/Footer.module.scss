@@ -1,0 +1,102 @@
+@import 'styles/shared.scss';
+
+.footer {
+  padding-bottom: 72px;
+}
+
+.footerText {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 220px;
+  color: $secondary-color;
+}
+
+.listSocialNets {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 210px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 0;
+  margin-bottom: 26px;
+  padding: 0;
+  list-style: none;
+}
+
+.linkWhatsApp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 51px;
+  height: 50px;
+  background-color: #1bd7413e;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 25px;
+
+  &:hover,
+  &:focus {
+    background-color: #1bd741;
+    color: rgb(255, 255, 255);
+  }
+}
+
+.linkTelegram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 51px;
+  height: 50px;
+  background: #61a8de;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 25px;
+
+  &:hover,
+  &:focus {
+    background: #0a92fb;
+    color: rgb(255, 255, 255);
+  }
+}
+
+.linkInstagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 51px;
+  height: 50px;
+  background: linear-gradient(49.12deg, #ffdd553e 6.62%, #ff543e36 50.06%, #c837ab3e 93.5%);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 25px;
+
+  &:hover,
+  &:focus {
+    background: linear-gradient(49.12deg, #ffdd55 6.62%, #ff543e 50.06%, #c837ab 93.5%);
+    color: rgb(255, 255, 255);
+  }
+}
+
+.contactsList {
+  list-style: none;
+  margin-bottom: 11px;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+
+.contactsItem:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.contactData {
+  display: block;
+  text-align: center;
+  color: $secondary-color;
+  text-decoration: none;
+}
+
+.contactPhone {
+  text-decoration: underline;
+}

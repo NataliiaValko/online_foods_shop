@@ -1,0 +1,26 @@
+@import 'styles/shared.scss';
+
+.detailProduct {
+  padding-top: 16px;
+  padding-bottom: 24px;
+}
+
+.recommendationProduct {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.hiddenTitle {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  text-align: center;
+}

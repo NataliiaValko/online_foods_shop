@@ -1,0 +1,46 @@
+@import 'styles/shared.scss';
+
+.productWrapper {
+  position: relative;
+  width: 330px;
+  padding: 20px 15px;
+  background-color: $mainLight-color;
+  border-radius: 15px;
+}
+
+.productBox {
+  margin-bottom: 30px;
+}
+
+.productDetail {
+  font-size: 18px;
+  font-weight: 300;
+  color: $mainAccent-color;
+  margin-bottom: 20px;
+}
+
+.priceBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productPrice {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.productImage {
+  width: 310px;
+  height: 176px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,13 @@
+@import 'styles/shared.scss';
+
+.categoriesList {
+  display: flex;
+  padding: 0;
+  margin: 0 -10px -10px 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.categoriesItem {
+  margin: 0 10px 10px 0;
+}
