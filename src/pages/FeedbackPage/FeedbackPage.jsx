@@ -12,6 +12,8 @@ import { Footer } from 'components/Footer';
 import { FeedbackList } from 'components/FeedbackList';
 import { FeedbackForm } from 'components/FeedbackForm';
 
+import { backEnd } from 'backEnd';
+
 import style from './FeedbackPage.module.scss';
 
 export const FeedbackPage = () => {
@@ -20,6 +22,8 @@ export const FeedbackPage = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const getFeedbackList = () => [...backEnd.feedbackList]; ///////////////////////
 
   const getSortingFeedbackList = feedbackList => {
     const newArr = feedbackList.sort((feedback1, feedback2) => {
@@ -33,7 +37,7 @@ export const FeedbackPage = () => {
       <section className={style.feedback}>
         <Container>
           <Title text="Feedbacks" />
-          <FeedbackList feedbackList={getSortingFeedbackList(feedbackList)} />
+          <FeedbackList feedbackList={getSortingFeedbackList(getFeedbackList())} />
           <Button
             variant="contained"
             onClick={handleOpen}
@@ -91,27 +95,27 @@ const styles = {
   },
 };
 
-const feedbackList = [
-  {
-    id: '1',
-    nameAuthor: 'Rozaliia',
-    dateFeedback: '02.24.21',
-    rating: 5,
-    textFeedback:
-      'Your delivery and your dishes are the best in Bishkek! Always very tasty, on time, always polite couriers and girls on the phone!',
-  },
-  {
-    id: '2',
-    nameAuthor: 'Elena',
-    dateFeedback: '11.18.22',
-    rating: 3,
-    textFeedback: 'So good!',
-  },
-  {
-    id: '3',
-    nameAuthor: 'Sergey Gavriljuk',
-    dateFeedback: '12.01.20',
-    rating: 4,
-    textFeedback: 'Great choice of sushi!',
-  },
-];
+// const feedbackList = [
+//   {
+//     id: '1',
+//     nameAuthor: 'Rozaliia',
+//     dateFeedback: '02.24.21',
+//     rating: 5,
+//     textFeedback:
+//       'Your delivery and your dishes are the best in Bishkek! Always very tasty, on time, always polite couriers and girls on the phone!',
+//   },
+//   {
+//     id: '2',
+//     nameAuthor: 'Elena',
+//     dateFeedback: '11.18.22',
+//     rating: 3,
+//     textFeedback: 'So good!',
+//   },
+//   {
+//     id: '3',
+//     nameAuthor: 'Sergey Gavriljuk',
+//     dateFeedback: '12.01.20',
+//     rating: 4,
+//     textFeedback: 'Great choice of sushi!',
+//   },
+// ];

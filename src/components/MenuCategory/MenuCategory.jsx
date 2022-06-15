@@ -8,18 +8,17 @@ export const MenuCategory = ({ products }) => {
   const loading = false; /////////////////////////////////////////////////
   return (
     <>
-      {/* {console.log(products)} */}
       <ul className={style.productsList}>
-        {products.map(({ id, fullName, weight, chunks, price, smallImage }) => {
+        {products.map(({ productId, fullName, weight, chunks, price, smallImage }) => {
           return (
-            <li key={id} className={style.productsItem}>
+            <li key={productId} className={style.productsItem}>
               {loading ? (
                 <>
                   <Skeleton variant="rectangular" width={330} height={120} />
                 </>
               ) : (
                 <CardProduct
-                  id={id}
+                  productId={productId}
                   fullName={fullName}
                   weight={weight}
                   smallImage={smallImage}

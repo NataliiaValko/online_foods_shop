@@ -12,7 +12,7 @@ export const Menu = ({ categories }) => {
         {categories.map((category, index, categories) => {
           return categories.length % 2 === 0 ? (
             index === categories.length - 1 || index === categories.length - 2 ? (
-              <li key={category.id} className={style.categoriesItem}>
+              <li key={category.categoryId} className={style.categoriesItem}>
                 {loading ? (
                   <Skeleton variant="rectangular" width={160} height={157} />
                 ) : (
@@ -27,7 +27,7 @@ export const Menu = ({ categories }) => {
                 )}
               </li>
             ) : (
-              <li key={category.id} className={style.categoriesItem}>
+              <li key={category.categoryId} className={style.categoriesItem}>
                 {loading ? (
                   <Skeleton variant="rectangular" width={160} height={157} />
                 ) : (
@@ -43,7 +43,7 @@ export const Menu = ({ categories }) => {
               </li>
             )
           ) : index === categories.length - 1 ? (
-            <li key={category.id} className={style.categoriesItem}>
+            <li key={category.categoryId} className={style.categoriesItem}>
               <CardMenu
                 size="large"
                 categoryName={category.name}
@@ -54,7 +54,7 @@ export const Menu = ({ categories }) => {
               />
             </li>
           ) : (
-            <li key={category.id} className={style.categoriesItem}>
+            <li key={category.categoryId} className={style.categoriesItem}>
               <CardMenu
                 size="small"
                 categoryName={category.name}

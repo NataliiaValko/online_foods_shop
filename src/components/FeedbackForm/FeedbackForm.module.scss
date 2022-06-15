@@ -4,6 +4,11 @@
   font-size: 20px;
   margin-top: 5px;
   margin-bottom: 15px;
+
+  &::placeholder {
+    padding-left: 10px;
+    font-size: 14px;
+  }
 }
 
 .fieldFeedback {
@@ -12,4 +17,10 @@
   font-size: 20px;
   margin-top: 5px;
   margin-bottom: 15px;
+
+  &::placeholder {
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 14px;
+  }
 }

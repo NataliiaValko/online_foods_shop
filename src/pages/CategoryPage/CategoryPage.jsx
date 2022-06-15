@@ -25,7 +25,8 @@ export const CategoryPage = () => {
   };
 
   const getSortedArrayProducts = (category, backEnd) => {
-    const categoryId = backEnd.categories.filter(categoryEl => categoryEl.name === category)[0].id;
+    const categoryId = backEnd.categories.filter(categoryEl => categoryEl.name === category)[0]
+      .categoryId;
     const products = backEnd.products.reduce((acc, product) => {
       if (product.categoryId === categoryId) {
         acc.push(product);

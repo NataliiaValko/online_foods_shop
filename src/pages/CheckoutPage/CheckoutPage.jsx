@@ -4,8 +4,8 @@ import { Formik, Field, Form } from 'formik';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
 
+import { getDataCartsFromLS, removeAllDataCartsFromLS } from 'localeStorage/actionsLS';
 import { CheckboxCustom } from 'components/CheckboxCustom';
 import { Container } from 'components/Container';
 import { Title } from 'components/Title';
@@ -17,21 +17,22 @@ import { deliveryOptions, priceOptions } from 'constants';
 
 import style from './CheckoutPage.module.scss';
 
-import { state } from 'state.js'; /////////////////////////
-
-const promoCodeList = [
-  ///////////////////////////////////
-  {
-    code: 'ILoveSushi',
-    discount: 0.1,
-  },
-  {
-    code: 'OneYear',
-    discount: 0.15,
-  },
-];
+const promoCodeList = () => {
+  return [
+    ///////////////////////////////////
+    {
+      code: 'ILoveSushi',
+      discount: 0.1,
+    },
+    {
+      code: 'OneYear',
+      discount: 0.15,
+    },
+  ];
+};
 
 export const CheckoutPage = ({}) => {
+  const [cart, setCart] = useState(getDataCartsFromLS());
   const [checkedChange, setCheckedChange] = useState(false);
   const [promoCode, setPromoCode] = useState('');
   const [normalSticksQuantity, setNormalSticksQuantity] = useState(0);
@@ -69,26 +70,6 @@ export const CheckoutPage = ({}) => {
     }
   };
 
-  const getTotalAmount = products => {
-    return products.reduce((acc, product) => {
-      return (acc = product.quantity * product.price + acc);
-    }, 0);
-  };
-
-  const getShipping = totalAmount => {
-    return totalAmount >= priceOptions.AMOUNT_FOR_FREE_SHIPPING ? 0 : priceOptions.PRICE_SHIPPING;
-  };
-
-  const getDiscount = totalAmount => {
-    return priceOptions.RULE_DISCOUNT.reduce((acc, rule) => {
-      acc =
-        totalAmount >= rule.AMOUNT && rule.DISCOUNT * totalAmount > acc
-          ? rule.DISCOUNT * totalAmount
-          : acc;
-      return acc;
-    }, 0);
-  };
-
   const getTotalAmountInOrder = products => {
     return (
       getTotalAmount(products) -
@@ -97,43 +78,85 @@ export const CheckoutPage = ({}) => {
     );
   };
 
+  const formikInitialValues = {
+    lastName: '',
+    firstName: '',
+    deliveryMethod: deliveryOptions.DELIVERY_METHOD.COURIER,
+    street: '',
+    house: '',
+    apartment: '',
+    entrance: '',
+    floor: '',
+    code: '',
+    payMethod: deliveryOptions.PAY_METHOD.CASH,
+    change: '',
+    email: '',
+    comment: '',
+    timeMethod: deliveryOptions.TIME_METHOD.NOW,
+    sticks: {
+      [deliveryOptions.TYPE_STICKS.EDUCATIONAL]: 0,
+      [deliveryOptions.TYPE_STICKS.NORMAL]: 0,
+    },
+    promoCode: '',
+  };
+
+  const formikOnSubmit = values => {
+    values.change = checkedChange ? values.change : '';
+    values.sticks[deliveryOptions.TYPE_STICKS.EDUCATIONAL] = educationalSticksQuantity;
+    values.sticks[deliveryOptions.TYPE_STICKS.NORMAL] = normalSticksQuantity;
+    values.promoCode = promoCode;
+
+    console.log(values, cart);
+    setCart([]);
+    removeAllDataCartsFromLS();
+  };
+
+  const getTotalQuantity = products => {
+    return products.length;
+  };
+
+  const getTotalAmount = products => {
+    return products.reduce((acc, product) => {
+      acc = Number(Number(product.price) + Number(acc)).toFixed(2);
+      return acc;
+    }, 0);
+  };
+
+  const getDiscount = totalAmount => {
+    const discountByAmount = priceOptions.RULE_DISCOUNT.reduce((acc, rule) => {
+      acc =
+        totalAmount >= rule.AMOUNT && rule.DISCOUNT * totalAmount > acc
+          ? (rule.DISCOUNT * totalAmount).toFixed(2)
+          : Number(acc).toFixed(2);
+      return acc;
+    }, 0);
+
+    const discountByPromoCode = promoCodeList().reduce((acc, code) => {
+      acc =
+        promoCode.toLowerCase().trim() === code.code.toLowerCase()
+          ? (code.discount * totalAmount).toFixed(2)
+          : Number(acc).toFixed(2);
+      return acc;
+    }, 0);
+
+    return Number(discountByAmount) > Number(discountByPromoCode)
+      ? discountByAmount
+      : discountByPromoCode;
+  };
+
+  const getShipping = totalAmount => {
+    return totalAmount >= priceOptions.AMOUNT_FOR_FREE_SHIPPING || totalAmount === 0
+      ? 0
+      : priceOptions.PRICE_SHIPPING;
+  };
+
   return (
     <>
       <section className={style.checkout}>
         <Container>
           <Title text="Your data" />
 
-          <Formik
-            initialValues={{
-              lastName: '',
-              firstName: '',
-              deliveryMethod: deliveryOptions.DELIVERY_METHOD.COURIER,
-              street: '',
-              house: '',
-              apartment: '',
-              entrance: '',
-              floor: '',
-              code: '',
-              payMethod: deliveryOptions.PAY_METHOD.CASH,
-              change: '',
-              email: '',
-              comment: '',
-              timeMethod: deliveryOptions.TIME_METHOD.NOW,
-              sticks: {
-                [deliveryOptions.TYPE_STICKS.EDUCATIONAL]: 0,
-                [deliveryOptions.TYPE_STICKS.NORMAL]: 0,
-              },
-              promoCode: '',
-            }}
-            onSubmit={values => {
-              values.change = checkedChange ? values.change : '';
-              values.sticks[deliveryOptions.TYPE_STICKS.EDUCATIONAL] = educationalSticksQuantity;
-              values.sticks[deliveryOptions.TYPE_STICKS.NORMAL] = normalSticksQuantity;
-              values.promoCode = promoCode;
-
-              console.log(values);
-            }}
-          >
+          <Formik initialValues={formikInitialValues} onSubmit={formikOnSubmit}>
             <Form>
               <Field
                 id="lastName"
@@ -303,10 +326,16 @@ export const CheckoutPage = ({}) => {
                 value={promoCode}
               />
               <Box sx={styles.forBoxResult}>
-                <TotalByOrder />
+                <TotalByOrder
+                  cart={cart}
+                  quantity={getTotalQuantity(cart)}
+                  amount={getTotalAmount(cart)}
+                  discount={getDiscount(getTotalAmount(cart))}
+                  shipping={getShipping(getTotalAmount(cart))}
+                />
                 <Stack direction="row" sx={styles.forRowTotal}>
                   <p className={style.totalPosition}>Total</p>
-                  <p className={style.resultAmount}>{`${getTotalAmountInOrder(state.cart)} USD`}</p>
+                  <p className={style.resultAmount}>{`${getTotalAmountInOrder(cart)} USD`}</p>
                 </Stack>
               </Box>
               <Button variant="contained" type="submit" sx={styles.forButtonSend}>

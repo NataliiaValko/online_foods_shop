@@ -36,6 +36,7 @@ export const FeedbackForm = ({ handleClose }) => {
           textFeedback: '',
         }}
         onSubmit={values => {
+          console.log(values);
           getDataFormFeedback(values);
           handleClose();
           setValue('0');
@@ -46,7 +47,7 @@ export const FeedbackForm = ({ handleClose }) => {
           <Field
             id="nameAuthorsFeedback"
             name="nameAuthorsFeedback"
-            placeholder="Name"
+            placeholder="Your name"
             className={style.fieldName}
           />
 

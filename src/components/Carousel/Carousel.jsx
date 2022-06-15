@@ -11,6 +11,8 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import style from './Carousel.module.scss';
 
 export const Carousel = ({ products, time, button = false }) => {
+  // console.log(products);
+
   const loading = false; /////////////////////////////////////////////////
   return (
     <>
@@ -46,11 +48,11 @@ export const Carousel = ({ products, time, button = false }) => {
                 </IconButton>
               );
             }}
-            items={products.map(({ id, fullName, price, smallImage }) => {
+            items={products.map(({ productId, fullName, price, smallImage }) => {
               return (
-                <div key={id} className={style.productsItem}>
+                <div key={productId} className={style.productsItem}>
                   <LittleCardProduct
-                    id={id}
+                    id={productId}
                     fullName={fullName}
                     smallImage={smallImage}
                     price={price}

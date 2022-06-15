@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useJsApiLoader, DistanceMatrixService } from '@react-google-maps/api';
+// import { useSelector } from 'react-redux';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
@@ -12,12 +13,13 @@ import { FooterNavigation } from 'components/FooterNavigation';
 import { CustomLink } from 'components/CustomLink';
 import { LittleMap } from 'components/LittleMap';
 
+import { getDataCartsFromLS } from 'localeStorage/actionsLS';
+
 import { getBrowserLocation } from 'utils/geo';
 import { GEO_POSITIONS_SHOPS, deliveryOptions, priceOptions } from 'constants';
 
 import style from './CartPage.module.scss';
 
-import { state } from 'state.js';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const libraries = ['places'];
@@ -28,6 +30,8 @@ export const CartPage = () => {
   const [minutes, setMinutes] = useState('');
   const [hours, setHours] = useState('');
   const [choiceAddress, setChoiceAddress] = useState(false);
+  const cart = getDataCartsFromLS();
+  // console.log(getDataCartsFromLS());
 
   useEffect(() => {
     getBrowserLocation()
@@ -81,7 +85,7 @@ export const CartPage = () => {
   };
   return (
     <>
-      {state.cart[0] ? <FullCart /> : <EmptyCart />}
+      {cart?.[0] ? <FullCart /> : <EmptyCart />}
       <section className={style.mapSection}>
         <Container>
           <div className={style.addressBox}>
@@ -136,7 +140,7 @@ export const CartPage = () => {
         </Container>
       </section>
       <div className={style.linkBox}>
-        {state.cart[0] ? (
+        {cart?.[0] ? (
           <CustomLink href="/checkout" content="Checkout" />
         ) : (
           <CustomLink href="/" content="View menu" />

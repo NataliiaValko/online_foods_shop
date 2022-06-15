@@ -2,8 +2,6 @@
 
 .cardBox {
   position: relative;
-  // width: 107px;
-  // height: 121px;
   background-color: transparent;
 }
 
@@ -28,14 +26,20 @@
 
 .priceBox {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  padding-bottom: 4px;
 }
 
 .price {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.278;
+}
+
+.priceCenter {
+  @extend .price;
+  text-align: center;
 }
 
 .productImage {

@@ -20,7 +20,7 @@ export const backEnd = {
   },
   categories: [
     {
-      id: '1',
+      categoryId: '1',
       name: 'pizza',
       fullName: 'Pizza',
       icon: '',
@@ -43,7 +43,7 @@ export const backEnd = {
       ],
     },
     {
-      id: '2',
+      categoryId: '2',
       name: 'sets',
       fullName: 'Sets',
       smallImage: {
@@ -65,7 +65,7 @@ export const backEnd = {
       ],
     },
     {
-      id: '3',
+      categoryId: '3',
       name: 'wok',
       fullName: 'WOK',
       smallImage: {
@@ -86,7 +86,7 @@ export const backEnd = {
       ],
     },
     {
-      id: '4',
+      categoryId: '4',
       name: 'rolls',
       fullName: 'Rolls',
       smallImage: {
@@ -108,7 +108,7 @@ export const backEnd = {
       ],
     },
     {
-      id: '5',
+      categoryId: '5',
       name: 'sushi',
       fullName: 'Sushi',
       smallImage: {
@@ -129,7 +129,7 @@ export const backEnd = {
       ],
     },
     {
-      id: '6',
+      categoryId: '6',
       name: 'salads',
       fullName: 'Salads',
       smallImage: {
@@ -150,7 +150,7 @@ export const backEnd = {
       ],
     },
     {
-      id: '7',
+      categoryId: '7',
       name: 'soups',
       fullName: 'Soups',
       smallImage: {
@@ -171,7 +171,7 @@ export const backEnd = {
       ],
     },
     {
-      id: '8',
+      categoryId: '8',
       name: 'cornDog',
       fullName: 'Corn dog',
       smallImage: {
@@ -192,7 +192,7 @@ export const backEnd = {
       ],
     },
     {
-      id: '9',
+      categoryId: '9',
       name: 'drinks',
       fullName: 'Drinks',
       smallImage: {
@@ -213,7 +213,7 @@ export const backEnd = {
       ],
     },
     {
-      id: '10',
+      categoryId: '10',
       name: 'promotions',
       fullName: 'Promotions',
       smallImage: {
@@ -236,7 +236,7 @@ export const backEnd = {
   ],
   products: [
     {
-      id: '1',
+      productId: '1',
       fullName: 'Salomon set',
       categoryId: '2',
       compositionId: ['3', '4'],
@@ -253,7 +253,7 @@ export const backEnd = {
       },
     },
     {
-      id: '2',
+      productId: '2',
       fullName: 'Philadelphia LOVE set',
       categoryId: '2',
       compositionId: ['3', '4'],
@@ -270,7 +270,7 @@ export const backEnd = {
       },
     },
     {
-      id: '3',
+      productId: '3',
       fullName: 'Set "5 Philadelphia"',
       categoryId: '2',
       compositionId: ['3', '4'],
@@ -287,7 +287,7 @@ export const backEnd = {
       },
     },
     {
-      id: '4',
+      productId: '4',
       fullName: 'Philadelphia and salmon set',
       categoryId: '2',
       compositionId: ['3', '4'],
@@ -304,7 +304,7 @@ export const backEnd = {
       },
     },
     {
-      id: '5',
+      productId: '5',
       fullName: 'Set "6 Philadelphia"',
       categoryId: '2',
       compositionId: ['3', '4'],
@@ -321,7 +321,7 @@ export const backEnd = {
       },
     },
     {
-      id: '6',
+      productId: '6',
       fullName: 'Top set',
       categoryId: '2',
       compositionId: ['3', '4'],
@@ -338,7 +338,7 @@ export const backEnd = {
       },
     },
     {
-      id: '7',
+      productId: '7',
       fullName: 'Kamikaze set',
       categoryId: '2',
       compositionId: ['3', '4'],
@@ -355,7 +355,7 @@ export const backEnd = {
       },
     },
     {
-      id: '8',
+      productId: '8',
       fullName: 'Set "4 Philadelphia"',
       categoryId: '2',
       compositionId: ['3', '4'],
@@ -372,7 +372,7 @@ export const backEnd = {
       },
     },
     {
-      id: '9',
+      productId: '9',
       fullName: 'Yakuza set',
       categoryId: '2',
       compositionId: ['3', '4'],
@@ -387,6 +387,30 @@ export const backEnd = {
         x1: 'https://live.staticflickr.com/65535/52036763876_5330d0375c_o.jpg',
         x2: 'https://live.staticflickr.com/65535/52035727237_bc47f34db8_o.jpg',
       },
+    },
+  ],
+  feedbackList: [
+    {
+      id: '1',
+      nameAuthor: 'Rozaliia',
+      dateFeedback: '02.24.21',
+      rating: 5,
+      textFeedback:
+        'Your delivery and your dishes are the best in Bishkek! Always very tasty, on time, always polite couriers and girls on the phone!',
+    },
+    {
+      id: '2',
+      nameAuthor: 'Elena',
+      dateFeedback: '11.18.22',
+      rating: 3,
+      textFeedback: 'So good!',
+    },
+    {
+      id: '3',
+      nameAuthor: 'Sergey Gavriljuk',
+      dateFeedback: '12.01.20',
+      rating: 4,
+      textFeedback: 'Great choice of sushi!',
     },
   ],
 };

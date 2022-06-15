@@ -1,16 +1,43 @@
 import { useParams } from 'react-router-dom';
-
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
+import uniqid from 'uniqid';
+
+import { addNewProductToCartToLS } from 'localeStorage/actionsLS';
 
 import style from './CardProduct.module.scss';
 
-export const CardProduct = ({ id, fullName, weight, smallImage, price, chunks }) => {
+import { backEnd } from 'backEnd.js'; ///////////////////
+
+export const CardProduct = ({ productId, fullName, weight, smallImage, price, chunks }) => {
   const { category } = useParams();
+  // const dispatch = useDispatch();
+
+  const getDataNewProduct = id => {
+    const product = backEnd.products.reduce((acc, product) => {
+      if (product.productId === id) {
+        acc = { ...product, id: uniqid() };
+      }
+      return acc;
+    }, {});
+
+    return product;
+  };
+
+  const handleClick = e => {
+    const newProduct = getDataNewProduct(e.currentTarget.dataset.id);
+    addNewProductToCartToLS(newProduct);
+  };
+
   return (
     <>
       <div className={style.cardProductWrapper}>
-        <Link type="button" href={`/menu/${category}/${id}`} underline="none" sx={styles.forLink}>
+        <Link
+          type="button"
+          href={`/menu/${category}/${productId}`}
+          underline="none"
+          sx={styles.forLink}
+        >
           <div className={style.cardProductBox}>
             <div className={style.imageBox}>
               <img
@@ -26,7 +53,13 @@ export const CardProduct = ({ id, fullName, weight, smallImage, price, chunks })
             </div>
           </div>
         </Link>
-        <Button variant="contained" type="submit" sx={styles.forButtonWanna}>
+        <Button
+          data-id={productId}
+          variant="contained"
+          type="button"
+          onClick={handleClick}
+          sx={styles.forButtonWanna}
+        >
           Wanna!
         </Button>
       </div>

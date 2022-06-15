@@ -1,27 +1,36 @@
 import Button from '@mui/material/Button';
-import { useDispatch } from 'react-redux';
-import { incrementQuantityProductByStep } from 'redux/cart/cartSlice';
+import uniqid from 'uniqid';
+// import { incrementQuantityProductByStep } from 'redux/cart/cartSlice';
 
 import { Title } from 'components/Title';
 import { Carousel } from 'components/Carousel';
 import { colors } from 'constants';
+import { addNewProductToCartToLS } from 'localeStorage/actionsLS';
 
 import style from './BigCardProduct.module.scss';
 
-const productTest = id => {
-  const item = { idProduct: id, name: 'diehdi' };
-  // console.log(item);
-  return item;
+import { backEnd } from 'backEnd.js'; ///////////////////
+
+const getDataNewProduct = id => {
+  const product = backEnd.products.reduce((acc, product) => {
+    if (product.id === id) {
+      acc = { ...product, id: uniqid() };
+    }
+    return acc;
+  }, {});
+
+  return product;
 };
 
 export const BigCardProduct = ({
   product: { id, largeImage, smallImage, fullName, weight, chunks, price },
   composition,
 }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleClick = e => {
-    dispatch(incrementQuantityProductByStep(productTest(e.currentTarget.dataset.id)));
+    const newProduct = getDataNewProduct(e.currentTarget.dataset.id);
+    addNewProductToCartToLS(newProduct);
   };
 
   return (

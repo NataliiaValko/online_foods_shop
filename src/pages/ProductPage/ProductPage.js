@@ -15,10 +15,11 @@ import style from './ProductPage.module.scss';
 
 export const ProductPage = () => {
   const { category, product: productId } = useParams();
-  const product = backEnd.products.find(product => product.id === productId);
+  const product = backEnd.products.find(product => product.productId === productId);
 
   const getRecommendationProducts = (category, backEnd) => {
-    const categoryId = backEnd.categories.filter(categoryEl => categoryEl.name === category)[0].id;
+    const categoryId = backEnd.categories.filter(categoryEl => categoryEl.name === category)[0]
+      .categoryId;
 
     const products = backEnd.products.reduce((acc, product) => {
       if (product.categoryId === categoryId) {
@@ -33,13 +34,14 @@ export const ProductPage = () => {
   };
 
   const getCompositionProduct = product => {
+    // console.log(product);
     return product.compositionId.map(id => {
       return backEnd.products.find(product => {
-        return product.id === id;
+        return product.productId === id;
       });
     });
   };
-
+  // console.log(getRecommendationProducts(category, backEnd));
   return (
     <>
       <section className={style.detailProduct}>
